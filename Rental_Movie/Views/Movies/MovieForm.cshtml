@@ -1,0 +1,40 @@
+﻿@model Rental_Movie.Viewmodels.MovieViewModel
+@{
+	ViewBag.Title = "MovieForm";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+@using (Html.BeginForm("Save", "Movies"))
+{
+	<div class="form-group">
+		@Html.LabelFor(m => m.Movie.Name)
+		@Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.Movie.Name)
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.Movie.ReleaseDate)
+		@Html.TextBoxFor(m => m.Movie.ReleaseDate, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.Movie.ReleaseDate)
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.Movie.DateAdded)
+		@Html.TextBoxFor(m => m.Movie.DateAdded, new { @class = "form-control", @Value = DateTime.Now, @readonly = "readonly" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.Movie.GenreId)
+		@Html.DropDownListFor(m => m.Movie.GenreId, new SelectList(Model.Genres, "Id", "Name"), "Select Genre ", new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.Movie.GenreId)
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.Movie.NumberInStock)
+		@Html.TextBoxFor(m => m.Movie.NumberInStock, new { @class = "form-control" })
+		@Html.ValidationMessageFor(m => m.Movie.NumberInStock)
+	</div>
+	@Html.HiddenFor(m => m.Movie.Id)
+	<button type="submit" class="btn btn-primary">Save</button>
+}
+@section scripts
+{
+	@Scripts.Render("~/bundles/jqueryval")
+}

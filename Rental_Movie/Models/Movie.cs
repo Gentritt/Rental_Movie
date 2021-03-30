@@ -23,5 +23,6 @@ namespace Rental_Movie.Models
 		[Display(Name = "Number in Stock")]
 		[Range(1, 20)]
 		public byte NumberInStock { get; set; }
+		public byte NumberAvaliable { get; set; }
 	}
 }

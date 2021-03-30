@@ -20,8 +20,8 @@ namespace Rental_Movie.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            var customers = _context.Movies.Include(x => x.genre).ToList();
-            return View(customers);
+            //var customers = _context.Movies.Include(x => x.genre).ToList();
+            return View();
         }
         public ActionResult Details(int id)
         {

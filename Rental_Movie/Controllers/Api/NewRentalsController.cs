@@ -20,19 +20,19 @@ namespace Rental_Movie.Controllers.Api
         public IHttpActionResult CreateNewRental(NewRentalDto newRentalDto)
 		{
             var customer = _context.Customers.Single
-                (c => c.Id == newRentalDto.CustomerId);
+              (c => c.Id == newRentalDto.CustomerId);
 
             var movies = _context.Movies.Where
                 (m => newRentalDto.movieIds.Contains(m.Id));
 
-			foreach (var movie in movies)
-			{
+            foreach (var movie in movies)
+            {
                 if (movie.NumberAvaliable == 0)
                     return BadRequest("Movie is Not Avaliable!");
                 movie.NumberAvaliable--;
                 var rental = new Rental
                 {
-                    
+
                     Customer = customer,
                     Movie = movie,
                     DateRented = DateTime.Now
@@ -40,8 +40,10 @@ namespace Rental_Movie.Controllers.Api
                 };
                 _context.Rentals.Add(rental);
 
-			}
-            _context.SaveChanges();
+            }
+        
+
+          _context.SaveChanges();
 
             return Ok();
 

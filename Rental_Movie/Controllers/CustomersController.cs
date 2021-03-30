@@ -17,11 +17,13 @@ namespace Rental_Movie.Controllers
 		{
             _context = new ApplicationDbContext();
 		}
+        [Authorize(Roles = RolesName.Admin)]
         public ActionResult Index()
         {
             //var customers = _context.Customers.Include(x => x.MembershipType).ToList();
             return View();
         }
+        [Authorize(Roles = RolesName.Admin)]
         public ActionResult New()
         {
             var membershipTypes = _context.membershipTypes.ToList();
@@ -61,6 +63,7 @@ namespace Rental_Movie.Controllers
             return RedirectToAction("Index", "Customers");
 
         }
+        [Authorize(Roles = RolesName.Admin)]
         public ActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.Include(x => x.MembershipType).SingleOrDefault(c => c.Id == id);
@@ -68,7 +71,7 @@ namespace Rental_Movie.Controllers
                 return HttpNotFound();
             return View(customer);
         }
-
+        [Authorize(Roles = RolesName.Admin)]
         public ActionResult Edit(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);

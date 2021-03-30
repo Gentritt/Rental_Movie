@@ -14,6 +14,7 @@ namespace Rental_Movie
 						  "~/Scripts/bootbox.js",
 						  "~/Scripts/DataTables/jquery.dataTables.js",
 						  "~/Scripts/DataTables/dataTables.bootstrap.js",
+						  "~/Scripts/toastr.js",
 						  "~/Scripts/typeahead.bundle.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -31,6 +32,7 @@ namespace Rental_Movie
 					  "~/Content/bootstrap.css",
 					  "~/Content/DataTables/css/dataTables.bootstrap.css",
 					  "~/Content/site.css",
+					  "~/Content/toastr.css",
 					  "~/Content/typeahead.css"));
 		}
 	}

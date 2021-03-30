@@ -20,8 +20,11 @@ namespace Rental_Movie.Controllers
         // GET: Movies
         public ActionResult Index()
         {
+            if (User.IsInRole("Admin"))
+                return View("Index");
+            else
+                return View("ReadOnlyList");
             //var customers = _context.Movies.Include(x => x.genre).ToList();
-            return View();
         }
         public ActionResult Details(int id)
         {
@@ -31,6 +34,7 @@ namespace Rental_Movie.Controllers
             return View(customer);
             
         }
+        [Authorize(Roles= RolesName.Admin)]
         public ActionResult New()
         {
             var genres = _context.Genres.ToList();
@@ -40,6 +44,7 @@ namespace Rental_Movie.Controllers
             };
             return View("MovieForm", viewmodel);
         }
+        [Authorize(Roles = RolesName.Admin)]
         [HttpPost]
         public ActionResult Save(Movie movie)
         {
@@ -68,6 +73,7 @@ namespace Rental_Movie.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Movies");
         }
+        [Authorize(Roles = RolesName.Admin)]
         public ActionResult Edit(int id)
         {
             var movie = _context.Movies.SingleOrDefault(x => x.Id == id);

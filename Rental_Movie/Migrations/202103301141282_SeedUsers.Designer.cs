@@ -13,7 +13,7 @@ namespace Rental_Movie.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202103301128016_SeedUsers"; }
+            get { return "202103301141282_SeedUsers"; }
         }
         
         string IMigrationMetadata.Source

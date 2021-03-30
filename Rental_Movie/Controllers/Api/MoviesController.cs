@@ -30,14 +30,18 @@ namespace Movie_Rental.Controllers.Api
         //        .Select(Mapper.Map<Movie, MovieDto>);
         //    return Ok(moviesdto);
         //}
-        public IEnumerable<MovieDto> GetMovies(string query = null)
+        public IHttpActionResult GetMovies(string query = null)
         {
             var moviesQuery = _context.Movies.Include(m => m.genre);
 
             if (!string.IsNullOrWhiteSpace(query))
                 moviesQuery = moviesQuery.Where(m => m.Name.Contains(query));
 
-            return moviesQuery.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            var moviesDtos = moviesQuery
+                .ToList()
+                .Select(Mapper.Map<Movie, MovieDto>);
+
+            return Ok(moviesDtos);
         }
         //get/movies/1
         public IHttpActionResult GetMovie(int id)

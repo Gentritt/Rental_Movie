@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
 
 namespace Movie_Rental.Controllers.Api
 {
@@ -20,9 +21,23 @@ namespace Movie_Rental.Controllers.Api
 
         //get/movies/
 
-        public IEnumerable<MovieDto> GetMovies()
+        //public IHttpActionResult GetMovies(string query = null)
+        //{
+        //    var moviesquery = _context.Movies.Include(c => c.genre);
+        //    if (!String.IsNullOrWhiteSpace(query))
+        //        moviesquery = moviesquery.Where(c => c.Name.Contains(query));
+        //    var moviesdto = moviesquery.ToList()
+        //        .Select(Mapper.Map<Movie, MovieDto>);
+        //    return Ok(moviesdto);
+        //}
+        public IEnumerable<MovieDto> GetMovies(string query = null)
         {
-            return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            var moviesQuery = _context.Movies.Include(m => m.genre);
+
+            if (!string.IsNullOrWhiteSpace(query))
+                moviesQuery = moviesQuery.Where(m => m.Name.Contains(query));
+
+            return moviesQuery.ToList().Select(Mapper.Map<Movie, MovieDto>);
         }
         //get/movies/1
         public IHttpActionResult GetMovie(int id)

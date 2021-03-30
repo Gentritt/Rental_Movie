@@ -215,9 +215,13 @@
     <Compile Include="Migrations\202103262039034_applyAnnonationsToCustomerName.Designer.cs">
       <DependentUpon>202103262039034_applyAnnonationsToCustomerName.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202103262039233_applyAnnonationsToMovieName.cs" />
-    <Compile Include="Migrations\202103262039233_applyAnnonationsToMovieName.Designer.cs">
-      <DependentUpon>202103262039233_applyAnnonationsToMovieName.cs</DependentUpon>
+    <Compile Include="Migrations\202103301104109_addPhoneNumberToApplicationUser.cs" />
+    <Compile Include="Migrations\202103301104109_addPhoneNumberToApplicationUser.Designer.cs">
+      <DependentUpon>202103301104109_addPhoneNumberToApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103301128016_SeedUsers.cs" />
+    <Compile Include="Migrations\202103301128016_SeedUsers.Designer.cs">
+      <DependentUpon>202103301128016_SeedUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -503,8 +507,11 @@
     <EmbeddedResource Include="Migrations\202103262039034_applyAnnonationsToCustomerName.resx">
       <DependentUpon>202103262039034_applyAnnonationsToCustomerName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103262039233_applyAnnonationsToMovieName.resx">
-      <DependentUpon>202103262039233_applyAnnonationsToMovieName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103301104109_addPhoneNumberToApplicationUser.resx">
+      <DependentUpon>202103301104109_addPhoneNumberToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103301128016_SeedUsers.resx">
+      <DependentUpon>202103301128016_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

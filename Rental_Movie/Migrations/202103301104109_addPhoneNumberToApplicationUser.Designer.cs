@@ -7,13 +7,13 @@ namespace Rental_Movie.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class applyAnnonationsToMovieName : IMigrationMetadata
+    public sealed partial class addPhoneNumberToApplicationUser : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(applyAnnonationsToMovieName));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addPhoneNumberToApplicationUser));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103262039233_applyAnnonationsToMovieName"; }
+            get { return "202103301104109_addPhoneNumberToApplicationUser"; }
         }
         
         string IMigrationMetadata.Source

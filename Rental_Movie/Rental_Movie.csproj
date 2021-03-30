@@ -191,10 +191,13 @@
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Controllers\RentalsController.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
+    <Compile Include="Dtos\CustomerDtoTest.cs" />
     <Compile Include="Dtos\GenreDto.cs" />
     <Compile Include="Dtos\membershipTypeDto.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
+    <Compile Include="Dtos\MovieDtoTest.cs" />
     <Compile Include="Dtos\NewRentalDto.cs" />
+    <Compile Include="Dtos\RentalDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

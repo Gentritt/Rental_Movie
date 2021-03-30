@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
+using AutoMapper;
 
 namespace Rental_Movie.Controllers.Api
 {
@@ -49,5 +51,13 @@ namespace Rental_Movie.Controllers.Api
 
 		}
 
+        public IHttpActionResult GetRentals()
+		{
+            var rentals = _context.Rentals.Include(m => m.Movie)
+                .Include(c => c.Customer)
+                .ToList()
+                .Select(Mapper.Map<Rental, RentalDto>);
+            return Ok(rentals);
+		}
     }
 }

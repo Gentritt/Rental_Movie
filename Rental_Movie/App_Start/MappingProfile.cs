@@ -21,6 +21,10 @@ namespace Rental_Movie.App_Start
 			Mapper.CreateMap<MembershipType, membershipTypeDto>();
 			Mapper.CreateMap<Genre, GenreDto>();
 
+			Mapper.CreateMap<Rental, RentalDto>();
+			Mapper.CreateMap<Movie, MovieDtoTest>();
+			Mapper.CreateMap<Customer, CustomerDtoTest>();
+
 			Mapper.CreateMap<CustomerDto, Customer>()
 					  .ForMember(c => c.Id, opt => opt.Ignore());
 

@@ -510,6 +510,7 @@
     <Content Include="Views\Movies\ReadOnlyList.cshtml" />
     <Content Include="Views\Rentals\New.cshtml" />
     <Content Include="Views\MembershipTypes\Index.cshtml" />
+    <Content Include="Views\MembershipTypes\MembershipTypeForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

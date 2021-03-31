@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Memberships Types</h2>
+<p>@Html.ActionLink("New Membership", "New", "MembershipTypes",null, new {@class = "btn btn-primary"})</p>
+
+<table id="memberships" class="table table-bordered table-hover" >
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Duration in Months</th>
+            <th>Discont Rate</th>
+            <th>SignUp Fee</th>
+            <th>Delete</th>
+
+        </tr>
+    </thead>
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#memberships").DataTable({
+
+                ajax: {
+                    url: "/api/MembershipTypes",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name"
+                    },
+                    {
+                        data: "durationInMonths"
+                    },
+                    {
+                        data: "discountRate"
+                    },
+                    {
+                        data: "signUpFee"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-membership-id" + data + ">Delete</button>";
+                        }
+                    },
+                ],
+
+            });
+
+        });
+
+    </script>
+    
+    
+}
+

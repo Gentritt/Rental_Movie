@@ -42,7 +42,6 @@ namespace Rental_Movie.Controllers.Api
 
 		}
         [HttpDelete]
-
         public void DeleteMembership(int id)
 		{
             var membership = _context.membershipTypes.SingleOrDefault(x => x.Id == id);

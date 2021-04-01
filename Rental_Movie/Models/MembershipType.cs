@@ -8,8 +8,8 @@ namespace Rental_Movie.Models
 {
 	public class MembershipType
 	{
-
-		[Required]
+		//[Required(ErrorMessage ="Write A name")]
+		//[StringLength(255)]
 		public string Name { get; set; }
 		public int Id { get; set; }
 		public short SignUpFee { get; set; }

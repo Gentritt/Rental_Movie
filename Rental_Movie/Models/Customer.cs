@@ -16,8 +16,9 @@ namespace Rental_Movie.Models
 		[Display(Name = "Membership type: ")]
 		public int MembershipTypeId { get; set; }
 		public bool IsSubscribedToNewsLetter { get; set; }
-		[Display(Name = "Birth Date: ")]
 		[Min18YearsCustomer]
+		[Display(Name = "Birth Date: ")]
+		[Required]
 		public DateTime? Birthdate { get; set; }
 	}
 }

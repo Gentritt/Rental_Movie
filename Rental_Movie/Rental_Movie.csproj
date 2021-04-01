@@ -239,6 +239,10 @@
     <Compile Include="Migrations\202103301328096_addNumberAvaliableToMovie.Designer.cs">
       <DependentUpon>202103301328096_addNumberAvaliableToMovie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104011702577_applyannonationstoCustomerBirthdate.cs" />
+    <Compile Include="Migrations\202104011702577_applyannonationstoCustomerBirthdate.Designer.cs">
+      <DependentUpon>202104011702577_applyannonationstoCustomerBirthdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -555,6 +559,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103301328096_addNumberAvaliableToMovie.resx">
       <DependentUpon>202103301328096_addNumberAvaliableToMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104011702577_applyannonationstoCustomerBirthdate.resx">
+      <DependentUpon>202104011702577_applyannonationstoCustomerBirthdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

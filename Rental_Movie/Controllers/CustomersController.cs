@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using Rental_Movie.Viewmodels;
+using System.Data.Entity.Validation;
 
 namespace Rental_Movie.Controllers
 {
@@ -39,15 +40,15 @@ namespace Rental_Movie.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
-            if (!ModelState.IsValid)
-            {
+			if (!ModelState.IsValid)
+			{
+
                 var viewmodel = new NewCustomerViewModel
                 {
                     Customer = customer,
                     membershipTypes = _context.membershipTypes.ToList()
                 };
-                return View("CustomerForm", viewmodel);
-            }
+			}
             if (customer.Id == 0)
                 _context.Customers.Add(customer);
 
@@ -59,7 +60,21 @@ namespace Rental_Movie.Controllers
                 customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
                 customer.MembershipTypeId = customer.MembershipTypeId;
             }
-            _context.SaveChanges();
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var error in e.EntityValidationErrors)
+                {
+                    foreach (var propertyError in error.ValidationErrors)
+                    {
+                        Console.WriteLine($"{propertyError.PropertyName} had the following issue: {propertyError.ErrorMessage}");
+                    }
+                }
+            }
+            //_context.SaveChanges();
             return RedirectToAction("Index", "Customers");
 
         }

@@ -22,6 +22,37 @@ namespace Rental_Movie.Controllers.Api
             return Ok(memberships);
 		}
 
+        public IHttpActionResult getMembership(int id)
+		{
+
+            var membership = _context.membershipTypes.SingleOrDefault(x => x.Id == id);
+            if (membership == null)
+                return NotFound();
+            return Ok(membership);
+		}
+
+        [HttpPost]
+        public MembershipType createMembership(MembershipType membership)
+		{
+            if (!ModelState.IsValid)
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            _context.membershipTypes.Add(membership);
+            _context.SaveChanges();
+            return membership;
+
+		}
+        [HttpDelete]
+
+        public void DeleteMembership(int id)
+		{
+            var membership = _context.membershipTypes.SingleOrDefault(x => x.Id == id);
+            if (membership == null)
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            _context.membershipTypes.Remove(membership);
+            _context.SaveChanges();
+		}
+
+
 
 
     }

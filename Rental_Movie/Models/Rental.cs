@@ -13,6 +13,7 @@ namespace Rental_Movie.Models
 		public Customer Customer { get; set; }
 		[Required]
 		public Movie Movie { get; set; }
+		[DataType(DataType.Date)]
 		public DateTime? DateRented { get; set; }
 		public DateTime? DateReturned { get; set; }
 

@@ -15,5 +15,9 @@ namespace Rental_Movie.Controllers
         {
             return View();
         }
+        public ActionResult Index()
+		{
+            return View();
+		}
     }
 }

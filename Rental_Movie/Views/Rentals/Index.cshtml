@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rentals</h2>
+
+<table id="rentals" class="table table-bordered table-hover">
+
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Movie</th>
+            <th>Date Rented</th>
+            <th>DateReturned</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+</table>
+
+@section scripts{
+<script>
+
+    $(document).ready(function () {
+        $("#rentals").DataTable({
+            ajax: {
+                url: "/api/newrentals",
+                dataSrc: ""
+            },
+            columns: [
+
+                {
+                    data: "customer.name"
+                },
+                {
+                    data: "movie.name"
+                },
+                {
+                    data: "dateRented",
+                    "render": function (value) {
+                        if (value == null) return "";
+                        return moment(value).format('DD/MM/YYYY');
+					}
+                },
+                {
+                    data: "dateReturned"
+				},
+                {
+                    data: "id",
+					render: function (data) {
+						return "<button class='btn-link js-delete' data-rental-id=" + data + ">Delete</button>";
+					}
+				}
+            ]
+
+
+        });
+
+
+    });
+    </script>    
+    
+}
+

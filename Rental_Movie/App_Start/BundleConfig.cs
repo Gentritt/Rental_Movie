@@ -15,6 +15,7 @@ namespace Rental_Movie
 						  "~/Scripts/DataTables/jquery.dataTables.js",
 						  "~/Scripts/DataTables/dataTables.bootstrap.js",
 						  "~/Scripts/toastr.js",
+						  "~/Scripts/moment.js",
 						  "~/Scripts/typeahead.bundle.js"));
 
 			bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

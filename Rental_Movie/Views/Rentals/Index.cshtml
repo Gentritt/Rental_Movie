@@ -31,7 +31,10 @@
             columns: [
 
                 {
-                    data: "customer.name"
+                    data: "customer.name",
+                    render: function (data, type, rental) {
+                        return "<a href= '/rentals/edit/" + rental.id + "'>" + rental.customer.name + "</a>";
+					}
                 },
                 {
                     data: "movie.name"
@@ -44,7 +47,11 @@
 					}
                 },
                 {
-                    data: "dateReturned"
+                    data: "dateReturned",
+                    "render": function (value) {
+                        if (value == null) return "";
+                        return moment(value).format('DD/MM/YYYY');
+					}
 				},
                 {
                     data: "id",

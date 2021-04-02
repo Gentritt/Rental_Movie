@@ -31,6 +31,7 @@ namespace Rental_Movie.Controllers.Api
             {
                 if (movie.NumberAvaliable == 0)
                     return BadRequest("Movie is Not Avaliable!");
+                
                 movie.NumberAvaliable--;
                 var rental = new Rental
                 {
@@ -43,8 +44,6 @@ namespace Rental_Movie.Controllers.Api
                 _context.Rentals.Add(rental);
 
             }
-        
-
           _context.SaveChanges();
 
             return Ok();

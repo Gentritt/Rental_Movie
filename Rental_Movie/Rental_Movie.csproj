@@ -239,10 +239,6 @@
     <Compile Include="Migrations\202103301328096_addNumberAvaliableToMovie.Designer.cs">
       <DependentUpon>202103301328096_addNumberAvaliableToMovie.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104011702577_applyannonationstoCustomerBirthdate.cs" />
-    <Compile Include="Migrations\202104011702577_applyannonationstoCustomerBirthdate.Designer.cs">
-      <DependentUpon>202104011702577_applyannonationstoCustomerBirthdate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -258,6 +254,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Viewmodels\MovieViewModel.cs" />
     <Compile Include="Viewmodels\NewCustomerViewModel.cs" />
+    <Compile Include="Viewmodels\RentalViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-flatly.css" />
@@ -522,6 +519,7 @@
     <Content Include="Views\Rentals\Index.cshtml" />
     <Content Include="Scripts\moment.min.js.map" />
     <Content Include="Scripts\moment-with-locales.min.js.map" />
+    <Content Include="Views\Rentals\RentalForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -566,9 +564,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103301328096_addNumberAvaliableToMovie.resx">
       <DependentUpon>202103301328096_addNumberAvaliableToMovie.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104011702577_applyannonationstoCustomerBirthdate.resx">
-      <DependentUpon>202104011702577_applyannonationstoCustomerBirthdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

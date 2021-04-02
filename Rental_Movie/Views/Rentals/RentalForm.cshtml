@@ -1,0 +1,32 @@
+﻿@model Rental_Movie.Models.Rental
+@{
+	ViewBag.Title = "Rentalform";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+@using (Html.BeginForm("Save", "Rentals"))
+{
+	<div class="form-group">
+		@Html.LabelFor(m => m.Customer.Name)
+		@Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.Movie.Name)
+		@Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.DateRented)
+		@Html.TextBoxFor(m => m.DateRented, new { @class = "form-control",@readonly = "readonly" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.DateReturned)
+		@Html.TextBoxFor(m => m.DateReturned, new { @class = "form-control", @Value = DateTime.Now, @readonly = "readonly" })
+	</div>
+	@Html.HiddenFor(m => m.Id)
+	<button type="submit" class="btn btn-primary">Save</button>
+}
+@section scripts
+{
+	@Scripts.Render("~/bundles/jqueryval")
+}

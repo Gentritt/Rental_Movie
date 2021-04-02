@@ -16,12 +16,13 @@ namespace Rental_Movie.Controllers.Api
             _context = new ApplicationDbContext();
 		}
         //Get/membershiptypes/
+        [Authorize(Roles = RolesName.Admin)]
         public IHttpActionResult GetMemberships()
 		{
             var memberships=  _context.membershipTypes.ToList();
             return Ok(memberships);
 		}
-
+        [Authorize(Roles = RolesName.Admin)]
         public IHttpActionResult getMembership(int id)
 		{
 
@@ -32,6 +33,7 @@ namespace Rental_Movie.Controllers.Api
 		}
 
         [HttpPost]
+        [Authorize(Roles = RolesName.Admin)]
         public MembershipType createMembership(MembershipType membership)
 		{
             if (!ModelState.IsValid)
@@ -42,6 +44,7 @@ namespace Rental_Movie.Controllers.Api
 
 		}
         [HttpDelete]
+        [Authorize(Roles = RolesName.Admin)]
         public void DeleteMembership(int id)
 		{
             var membership = _context.membershipTypes.SingleOrDefault(x => x.Id == id);

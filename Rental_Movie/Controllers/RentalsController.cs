@@ -23,11 +23,13 @@ namespace Rental_Movie.Controllers
         {
             return View();
         }
+        [Authorize(Roles = RolesName.Admin)]
         public ActionResult Index()
 		{
             return View();
 		}
         [HttpPost]
+        [Authorize(Roles = RolesName.Admin)]
         public ActionResult Save(Rental rental)
         {
 
@@ -52,6 +54,7 @@ namespace Rental_Movie.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Rentals");
         }
+        [Authorize(Roles = RolesName.Admin)]
         public ActionResult Edit(int id)
 		{
             var rental = _context.Rentals.Include(x=> x.Customer).Include(m=> m.Movie).SingleOrDefault(x => x.Id == id);

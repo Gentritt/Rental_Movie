@@ -19,6 +19,7 @@ namespace Rental_Movie.Controllers.Api
             _context = new ApplicationDbContext();
 		}
         [HttpPost]
+        [Authorize(Roles = RolesName.Admin)]
         public IHttpActionResult CreateNewRental(NewRentalDto newRentalDto)
 		{
             var customer = _context.Customers.Single
@@ -49,7 +50,7 @@ namespace Rental_Movie.Controllers.Api
             return Ok();
 
 		}
-
+        [Authorize(Roles = RolesName.Admin)]
         public IHttpActionResult GetRentals()
 		{
             var rentals = _context.Rentals.Include(m => m.Movie)

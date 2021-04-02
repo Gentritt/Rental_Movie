@@ -15,17 +15,20 @@ namespace Rental_Movie.Controllers
             _context = new ApplicationDbContext();
 		}
         // GET: MembershipTypes
+        [Authorize(Roles = RolesName.Admin)]
         public ActionResult Index()
         {
             return View();
         }
 
+        [Authorize(Roles = RolesName.Admin)]
         public ActionResult New (MembershipType membershipType)
 		{
             return View("MembershipTypeForm");
 		}
 
         [HttpPost]
+        [Authorize(Roles = RolesName.Admin)]
         public ActionResult Save(MembershipType membershipType)
 		{
             if (membershipType.Id == 0)

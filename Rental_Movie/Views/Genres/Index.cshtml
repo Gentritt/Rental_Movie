@@ -1,0 +1,62 @@
+﻿c
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Genres</h2>
+<p>@Html.ActionLink("New Genres","New","Genres",null, new {@class = "btn btn-primary"})</p>
+
+<table id="genres" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+</table>
+
+@section scripts{
+<script>
+    $(document).ready(function () {
+       var table =  $("#genres").DataTable({
+            ajax: {
+                url: "/api/genres",
+                dataSrc: ""
+            },
+            columns: [
+                {
+                    data: "name"
+
+                },
+                {
+                    data: "id",
+                    render: function (data) {
+                        return "<button class='btn-link js-delete' data-genre-id=" + data + ">Delete </button>";
+					}
+				}
+            ]
+
+       });
+
+        $("#genres").on("click",".js-delete", function () {
+            var button = $(this);
+            bootbox.confirm("Are you sure you want to delete this Genre? ", function (result) {
+                if (result) {
+                    $.ajax({
+                        url: "/api/genres/" + button.attr("data-genre-id"),
+                        method: "DELETE",
+                        success: function () {
+                            table.row(button.parents("tr")).remove().draw();
+                        }
+                    });
+				}
+            });
+        });
+
+    });
+</script>    
+    
+    
+}
+

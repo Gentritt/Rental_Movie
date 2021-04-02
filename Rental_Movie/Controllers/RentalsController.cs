@@ -41,14 +41,13 @@ namespace Rental_Movie.Controllers
 
             if (rental.Id == 0)
                 _context.Rentals.Add(rental);
+            
             else
             {
-                //If Movie Exits than update !
+              //If Movie Exits than update !
                 var rentalInDb = _context.Rentals.Include(x=> x.Customer).Include(m=> m.Movie).SingleOrDefault(x => x.Id == rental.Id);
-                //rentalInDb.Customer = rental.Customer;
-                //rentalInDb.Movie = rental.Movie;
-                //rentalInDb.DateRented = rental.DateRented;
                 rentalInDb.DateReturned = rental.DateReturned;
+                rentalInDb.Movie.NumberAvaliable++;
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Rentals");

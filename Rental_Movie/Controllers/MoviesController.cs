@@ -48,16 +48,6 @@ namespace Rental_Movie.Controllers
         [HttpPost]
         public ActionResult Save(Movie movie)
         {
-            //var genres = _context.Genres.ToList();
-
-            //    var viewmodel = new MovieViewModel
-            //    {
-            //        Movie = movie,
-            //        Genres = genres
-            //    };
-            //return View("MovieForm", viewmodel);
-
-
             if (movie.Id == 0)
 			{
                 movie.DateAdded = DateTime.Now;
@@ -72,7 +62,7 @@ namespace Rental_Movie.Controllers
                 movieInDb.ReleaseDate = movie.ReleaseDate;
                 movieInDb.NumberInStock = movie.NumberInStock;
                 movieInDb.GenreId = movie.GenreId;
-                movieInDb.DateAdded = movie.DateAdded;
+                //movieInDb.DateAdded = DateTime.Now;
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Movies");

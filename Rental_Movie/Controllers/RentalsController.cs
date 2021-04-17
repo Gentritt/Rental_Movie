@@ -46,7 +46,7 @@ namespace Rental_Movie.Controllers
             
             else
             {
-              //If Movie Exits than update !
+               //Update the database when a movie is returned
                 var rentalInDb = _context.Rentals.Include(x=> x.Customer).Include(m=> m.Movie).SingleOrDefault(x => x.Id == rental.Id);
                 rentalInDb.DateReturned = rental.DateReturned;
                 rentalInDb.Movie.NumberInStock++;

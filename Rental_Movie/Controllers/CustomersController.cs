@@ -40,15 +40,15 @@ namespace Rental_Movie.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
-			if (!ModelState.IsValid)
-			{
+			//if (!ModelState.IsValid)
+			//{
 
-                var viewmodel = new NewCustomerViewModel
-                {
-                    Customer = customer,
-                    membershipTypes = _context.membershipTypes.ToList()
-                };
-			}
+   //             var viewmodel = new NewCustomerViewModel
+   //             {
+   //                 Customer = customer,
+   //                 membershipTypes = _context.membershipTypes.ToList()
+   //             };
+			//}
             if (customer.Id == 0)
                 _context.Customers.Add(customer);
 

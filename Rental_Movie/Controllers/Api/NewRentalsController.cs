@@ -30,16 +30,17 @@ namespace Rental_Movie.Controllers.Api
 
             foreach (var movie in movies)
             {
-                if (movie.NumberAvaliable == 0)
+                if (movie.NumberInStock == 0)
                     return BadRequest("Movie is Not Avaliable!");
                 
-                movie.NumberAvaliable--;
+                movie.NumberInStock--;
                 var rental = new Rental
                 {
 
                     Customer = customer,
                     Movie = movie,
                     DateRented = DateTime.Now
+                   
 
                 };
                 _context.Rentals.Add(rental);

@@ -17,7 +17,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <IISExpressSSLPort>44366</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -374,10 +374,24 @@
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Content\typeahead.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\templatemo-blue.css" />
+    <Content Include="css\templatemo-gray.css" />
+    <Content Include="css\templatemo-green.css" />
+    <Content Include="css\templatemo-orange.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\tm-bg-slide-1.jpg" />
+    <Content Include="images\tm-bg-slide-2.jpg" />
+    <Content Include="images\tm-bg-slide-3.jpg" />
+    <Content Include="images\tm-easy-profile.jpg" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\custom.js" />
+    <Content Include="js\jquery.backstretch.min.js" />
+    <Content Include="js\jquery.js" />
     <Content Include="Scripts\bloodhound.js" />
     <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\bootbox.js" />
@@ -524,6 +538,7 @@
     <Content Include="Views\Rentals\RentalForm.cshtml" />
     <Content Include="Views\Genres\Index.cshtml" />
     <Content Include="Views\Genres\GenreForm.cshtml" />
+    <Content Include="Views\Rentals\DateReturnedForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -588,7 +603,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52188</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44366/</IISUrl>
+          <IISUrl>https://localhost:44367/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

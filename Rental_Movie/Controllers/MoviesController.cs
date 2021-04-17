@@ -59,7 +59,11 @@ namespace Rental_Movie.Controllers
 
 
             if (movie.Id == 0)
+			{
+                movie.DateAdded = DateTime.Now;
                 _context.Movies.Add(movie);
+            }
+             
             else
             {
                 //If Movie Exits than update !

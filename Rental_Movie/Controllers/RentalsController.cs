@@ -49,7 +49,7 @@ namespace Rental_Movie.Controllers
               //If Movie Exits than update !
                 var rentalInDb = _context.Rentals.Include(x=> x.Customer).Include(m=> m.Movie).SingleOrDefault(x => x.Id == rental.Id);
                 rentalInDb.DateReturned = rental.DateReturned;
-                rentalInDb.Movie.NumberAvaliable++;
+                rentalInDb.Movie.NumberInStock++;
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Rentals");
@@ -60,7 +60,7 @@ namespace Rental_Movie.Controllers
             var rental = _context.Rentals.Include(x=> x.Customer).Include(m=> m.Movie).SingleOrDefault(x => x.Id == id);
             if (rental == null)
                 return HttpNotFound();
-            return View("RentalForm", rental);
+            return View("DateReturnedForm", rental);
 		}
     }
 }

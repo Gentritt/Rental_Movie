@@ -40,16 +40,17 @@ namespace Rental_Movie.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
-			//if (!ModelState.IsValid)
-			//{
+			if (!ModelState.IsValid)
+			{
 
-   //             var viewmodel = new NewCustomerViewModel
-   //             {
-   //                 Customer = customer,
-   //                 membershipTypes = _context.membershipTypes.ToList()
-   //             };
-			//}
-            if (customer.Id == 0)
+				var viewmodel = new NewCustomerViewModel
+				{
+					Customer = customer,
+					membershipTypes = _context.membershipTypes.ToList()
+				};
+                return View("CustomerForm",viewmodel);
+			}
+			if (customer.Id == 0)
                 _context.Customers.Add(customer);
 
             else
@@ -64,15 +65,16 @@ namespace Rental_Movie.Controllers
             {
                 _context.SaveChanges();
             }
-            catch (DbEntityValidationException e)
+            catch (Exception ex)
             {
-                foreach (var error in e.EntityValidationErrors)
-                {
-                    foreach (var propertyError in error.ValidationErrors)
-                    {
-                        Console.WriteLine($"{propertyError.PropertyName} had the following issue: {propertyError.ErrorMessage}");
-                    }
-                }
+                ModelState.AddModelError("Unable to save changes",ex);
+                //foreach (var error in e.EntityValidationErrors)
+                //{
+                //    foreach (var propertyError in error.ValidationErrors)
+                //    {
+                //        Console.WriteLine($"{propertyError.PropertyName} had the following issue: {propertyError.ErrorMessage}");
+                //    }
+                //}
             }
             //_context.SaveChanges();
             return RedirectToAction("Index", "Customers");

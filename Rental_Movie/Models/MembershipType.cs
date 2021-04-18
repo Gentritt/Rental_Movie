@@ -16,6 +16,6 @@ namespace Rental_Movie.Models
 		public byte DurationInMonths { get; set; }
 		public byte DiscountRate { get; set; }
 		public static readonly byte Unknown = 0;
-		public static readonly byte PayAsYouGo = 1;
+		public static readonly byte PayAsYouGo = 10;
 	}
 }

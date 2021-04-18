@@ -17,9 +17,9 @@ namespace Rental_Movie.Models
 		public int MembershipTypeId { get; set; }
 		public bool IsSubscribedToNewsLetter { get; set; }
 
-		[Display(Name = "Birth Date: ")]
+		//[MinimumAge(18,ErrorMessage ="Please enter a valid Birthdate")]
 		[Min18YearsCustomer]
-		[Required]
+		[Display(Name = "Birth Date: ")]
 		public DateTime? Birthdate { get; set; }
 	}
 }

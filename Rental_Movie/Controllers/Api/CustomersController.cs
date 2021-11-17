@@ -7,15 +7,25 @@ using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Data.Entity;
+using Amazon.S3;
+using Amazon.S3.Model;
+using Newtonsoft.Json;
+using Rental_Movie.Azure;
 
 namespace Movie_Rental.Controllers.Api
 {
 	public class CustomersController : ApiController
 	{
 		private static ApplicationDbContext _context;
+		private BlobManager _blobManager;
+
+		private IAmazonS3 _client;
 		public CustomersController()
 		{
 			_context = new ApplicationDbContext();
+			_client = new AmazonS3Client();
+			_blobManager = new BlobManager("riinvest");
+			_blobManager.BlobContainerInit();
 		}
 		//Get/customers/
 		public IHttpActionResult GetCustomers(string query = null)
@@ -25,6 +35,12 @@ namespace Movie_Rental.Controllers.Api
 				customersQuery = customersQuery.Where(c => c.Name.Contains(query));
 			var customerDtos = customersQuery.ToList()
 				.Select(Mapper.Map<Customer, CustomerDto>);
+
+			var awsCustomers = _client.ListObjectsV2(new ListObjectsV2Request()
+			{
+				BucketName = "riinvest",
+				Prefix = "gent/customers/"
+			});
 			return Ok(customerDtos);
 		}
 
@@ -48,6 +64,8 @@ namespace Movie_Rental.Controllers.Api
 			_context.Customers.Add(customerdb);
 			_context.SaveChanges();
 			customerdto.Id = customerdb.Id;
+		
+
 			return Created(new Uri(Request.RequestUri + "/" + customerdb.Id), customerdto);
 
 		}
@@ -74,6 +92,14 @@ namespace Movie_Rental.Controllers.Api
 				throw new HttpResponseException(HttpStatusCode.NotFound);
 			_context.Customers.Remove(customer);
 			_context.SaveChanges();
+
+			_client.DeleteObject(new DeleteObjectRequest()
+			{
+				BucketName = "riinvest",
+				Key = $"gent/customers/{id}.json"
+			});
+
+			_blobManager.DeleteFile($"{id.ToString()}.json");
 		}
 
 	}

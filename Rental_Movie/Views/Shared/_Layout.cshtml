@@ -9,16 +9,40 @@
 
 </head>
 <body>
-    @Html.Partial("_NavBar")
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+	@Html.Partial("_NavBar")
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+		<footer>
+			<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+		</footer>
+	</div>
 
-    @Scripts.Render("~/bundles/lib")
-    @RenderSection("scripts", required: false)
+	@using (Html.BeginForm("AzureUploadInputFile", "Customers",FormMethod.Post, new { enctype="multipart/form-data"}))
+	{
+
+		@*<label class="w-100 mb-4" style="box-shadow: 0px 10px 8px -5px rgba(0, 0, 0, 0.3); border-radius: 200px">Upload file to Azure</label>
+		<div class="d-flex">
+			<input name="files" type="file" class="form-control-file" />
+			<button type="submit" class="btn btn-secondary">Submit</button>
+		</div>*@
+
+<fieldset>
+	<legend>
+		Upload File
+	</legend>
+	<ul>
+		<li>
+			<label> Select File</label>
+			<input type="file" name="files" value="" />
+		</li>
+
+	</ul>
+	<button type="submit" value="Submit">Submit</button>
+</fieldset>
+	}
+
+	@Scripts.Render("~/bundles/lib")
+	@RenderSection("scripts", required: false)
 </body>
 </html>

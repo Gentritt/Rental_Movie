@@ -5,10 +5,13 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Amazon.S3;
+using Amazon.S3.Model;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Newtonsoft.Json;
 using Rental_Movie.Models;
 
 namespace Rental_Movie.Controllers
@@ -18,9 +21,12 @@ namespace Rental_Movie.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IAmazonS3 _client;
 
         public AccountController()
+            
         {
+            _client = new AmazonS3Client();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -77,7 +83,15 @@ namespace Rental_Movie.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+			_client.PutObject(new PutObjectRequest()
+			{
+				BucketName = "riinvest",
+				Key = $"gent/customers/{model.Email}.json",
+				ContentBody = JsonConvert.SerializeObject(model)
+
+			});
+
+			switch (result)
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
@@ -89,7 +103,11 @@ namespace Rental_Movie.Controllers
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
+
+                  
             }
+
+          
         }
 
         //

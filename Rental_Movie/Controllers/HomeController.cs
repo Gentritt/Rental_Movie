@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rental_Movie.AWS_AMAZON;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,9 @@ namespace Rental_Movie.Controllers
 	{
 		public ActionResult Index()
 		{
+			//AmazonS3Uploader amazonS3 = new AmazonS3Uploader();
+			//amazonS3.UploadFile();
+
 			return View();
 		}
 
@@ -26,5 +30,7 @@ namespace Rental_Movie.Controllers
 
 			return View();
 		}
+
+	
 	}
 }
